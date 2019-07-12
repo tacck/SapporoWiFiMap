@@ -3,7 +3,6 @@
 </template>
 
 <script>
-// import axios from 'axios';
 import wifiData from "../assets/sapporo-wifi.json";
 
 import "leaflet/dist/leaflet.css";
