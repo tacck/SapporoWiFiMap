@@ -16,6 +16,11 @@ L.Icon.Default.mergeOptions({
 });
 
 export default {
+  data: function () {
+    return {
+      currentCircle: null
+    }
+  },
   mounted() {
     // 地図作成 札幌駅
     const map = L.map("map")
@@ -30,8 +35,19 @@ export default {
     // 現在位置へ
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        map.setView([position.coords.latitude, position.coords.longitude], 15);
+        map.setView([position.coords.latitude, position.coords.longitude], 16);
+
+        this.currentCircle = L.circle(
+          [position.coords.latitude, position.coords.longitude],
+          {
+            color: "#0099AA",
+            fillColor: "#09A",
+            fillOpacity: 0.25,
+            radius: 100
+          }
+        ).addTo(map);
       });
+      navigator.geolocation.watchPosition(this.updateCurrentPosition);
     } else {
       console.log("Not Geo");
     }
@@ -44,6 +60,11 @@ export default {
         )
         .addTo(map);
     });
+  },
+  methods: {
+    updateCurrentPosition: function (position) {
+      this.currentCircle.setLatLng([position.coords.latitude, position.coords.longitude]);
+    }
   }
 };
 </script>
