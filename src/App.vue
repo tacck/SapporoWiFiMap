@@ -28,6 +28,7 @@ html, body, #app {
 }
 #app {
   display: grid;
-  grid-template-rows: 120px 1fr 80px;
+  grid-template-rows: 56px 1fr 80px;
+  grid-auto-rows: minmax(80px, auto);
 }
 </style>

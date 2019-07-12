@@ -29,11 +29,9 @@ export default {
 
     // 現在位置へ
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          map.setView([position.coords.latitude, position.coords.longitude], 15)
-        }
-      );
+      navigator.geolocation.getCurrentPosition(position => {
+        map.setView([position.coords.latitude, position.coords.longitude], 15);
+      });
     } else {
       console.log("Not Geo");
     }
@@ -49,3 +47,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.leaflet-container {
+  z-index: 0;
+}
+</style>
