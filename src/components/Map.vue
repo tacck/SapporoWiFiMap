@@ -21,7 +21,7 @@ export default {
     const map = L.map("map")
       .setView([43.0680165, 141.3519007], 15)
       .addLayer(
-        L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+        L.tileLayer("https://{s}.tile.osm.org/{z}/{x}/{y}.png", {
           attribution:
             'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>'
         })
